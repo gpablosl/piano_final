@@ -1,11 +1,11 @@
-from ast import Return
 from threading import Thread, Event
 import numpy as np
 import sounddevice as sd
 
 class StreamThread(Thread):
+
     def __init__(self, app):
-        super().__init__()
+        super().__init__()        
         self.dispoitivo_input = 1
         self.dispoitivo_output = 3
         self.tamano_bloque = 8000
@@ -14,6 +14,7 @@ class StreamThread(Thread):
         self.tipo_dato = np.int16
         self.latencia = "low"
         self.app = app
+
     def callback_stream(self, indata, outdata, frames, time, status):
 
         data = indata[:,0]
@@ -247,3 +248,4 @@ class StreamThread(Thread):
 
         except Exception as e:
             print(str(e))
+
